@@ -1,0 +1,52 @@
+# README
+
+This repository contains the Terraform configuration files to provision and manage an Azure Kubernetes Service (AKS) cluster.
+
+## Prerequisites
+
+Before you can use this Terraform configuration, ensure you have the following prerequisites:
+
+1. Azure CLI installed on your local machine.
+2. Azure subscription and the necessary permissions to create resources.
+3. Terraform installed on your local machine.
+
+## Getting Started
+
+To use this Terraform configuration, follow these steps:
+
+1. Clone this repository to your local machine:
+
+```bash
+git clone git@github.com:ay1ncode/terraformaks-ay.git
+
+#add credentials to service pricipal in main.tf
+service_principal {
+    client_id     = "************"
+    client_secret = "************"
+  }
+
+#Change into the cloned directory:
+cd terraformaks-ay
+
+#Initialize Terraform:
+terraform init
+
+#vALIDATE Terraform:
+terraform validate
+
+#Plan the Provisioning the AKS cluster:
+terraform plan
+
+#Provision the AKS cluster:
+terraform apply
+
+#Contents
+#main.tf: Contains the Terraform configuration to create the AKS cluster, Azure Resource Group, and other resources.
+#variables.tf: Defines input variables used in the main.tf file.
+#output.tf: Defines output values after creating the resources.
+#providers.tf: Specifies the required provider, in this case, "azurerm."
+#terraform.tfvars provides the parameters 
+#Cleanup
+#To remove the provisioned resources, run:
+
+terraform destroy
